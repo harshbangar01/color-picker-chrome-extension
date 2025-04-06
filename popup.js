@@ -37,4 +37,4 @@ async function pickColor() {
     } catch (err) {
         console.error(err);
     }
-}                   
+}

@@ -1,13 +1,11 @@
 body {
-    background-color: #f1f5f9;
+    background: #f1f5f9;
 }
-
-.wrapper{
+.wrapper {
     width: 300px;
     text-align: center;
 }
-
-.changeColorBtn{
+.changeColorBtn {
     width: 200px;
     outline: none;
     border: none;
@@ -16,14 +14,12 @@ body {
     background: #facc15;
     cursor: pointer;
 }
-
 .colorGrid {
     display: inline-block;
-    width: 2px;
+    width: 20px;
     height: 20px;
     border-radius: 2px;
 }
-
 .selectedColor {
     display: flex;
     align-items: center;
