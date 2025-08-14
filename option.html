@@ -1,8 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Color Picker Options</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 360px;
+      padding: 25px 30px;
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .color-picker {
+      margin: 20px 0;
+    }
+
+    input[type="color"] {
+      width: 60px;
+      height: 40px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .save-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: #f44336;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body>
-   <h1>Settings</h1>
+
+  <div class="modal">
+    <h2>Select Default Color</h2>
+    <div class="color-picker">
+      <input type="color" id="colorInput">
+    </div>
+    <div class="buttons">
+      <button class="save-btn" id="saveBtn">Save</button>
+      <button class="cancel-btn" id="cancelBtn">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // Load saved color
+    window.onload = function () {
+      chrome.storage.sync.get(['defaultColor'], function (result) {
+        if (result.defaultColor) {
+          document.getElementById('colorInput').value = result.defaultColor;
+        }
+      });
+    };
+
+    // Save color
+    document.getElementById('saveBtn').addEventListener('click', function () {
+      const color = document.getElementById('colorInput').value;
+      chrome.storage.sync.set({ defaultColor: color }, function () {
+        alert('Color saved!');
+      });
+    });
+
+    // Cancel (reload to revert)
+    document.getElementById('cancelBtn').addEventListener('click', function () {
+      window.location.reload();
+    });
+  </script>
+
 </body>
 </html>
