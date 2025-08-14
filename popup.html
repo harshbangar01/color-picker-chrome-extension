@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="popup.css">
+  <meta charset="UTF-8" />
+  <title>Color Picker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f3f3;
+    }
+
+    .modal {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .changeColorBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .colorGrid {
+      width: 100%;
+      height: 50px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: #eee;
+    }
+
+    .colorValue {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h2>Welcome to my color picker</h2>
-    <button class="changeColorBtn">Pick color</button>
-    <div class="selectedColor">
-        <span class="colorGrid"></span>
-        <span class="colorValue"></span>
-    </div>
+  <div class="modal">
+    <h2>Pick a Color</h2>
+    <div class="colorGrid"></div>
+    <div class="colorValue">#FFFFFF</div>
+    <button class="changeColorBtn">Pick Color</button>
   </div>
-    <script src="popup.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
